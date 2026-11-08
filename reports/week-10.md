@@ -2,28 +2,40 @@
 
 ## Completed Work
 
-TODO
+- Forked the project repository.
+- Reviewed project requirements.
+- Selected Level C.
+- Chose the project topic.
+- Designed the initial architecture.
+- Prepared the project proposal.
 
 ## Important Commits
 
-TODO
+- Commit Hash: Initial setup commit
+- Description: Created project structure and proposal.
+- Link: GitHub repository
 
 ## Current Functionality
 
-TODO
+The project is currently in the planning stage. The architecture, tools, and functionality have been defined.
 
 ## Problems Encountered
 
-TODO
+Choosing a project scope that satisfies Level C requirements.
 
 ## Solutions
 
-TODO
+Selected an AI Statistics Tutor project with two meaningful tools and LLM-based tool selection.
 
 ## What I Learned
 
-TODO
+- Differences between D, C, and A level projects.
+- Basic AI agent architecture.
+- Tool-calling concepts in LLM applications.
+- Project evaluation requirements.
 
 ## Next Week
 
-TODO
+- Integrate the LLM API.
+- Create the first working model request.
+- Begin implementation of core functionality.
