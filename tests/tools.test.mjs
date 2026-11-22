@@ -21,3 +21,18 @@ test("returns not found for unknown topic", () => {
 test("throws error when topic is missing", () => {
   assert.throws(() => searchStatisticsTopic());
 });
+
+import { generateQuiz } from "../src/tools.mjs";
+
+test("generates structured quiz", async () => {
+  const quiz = await generateQuiz("ANOVA", 3);
+
+  assert.equal(quiz.topic, "ANOVA");
+  assert.equal(quiz.questions.length, 3);
+});
+
+test("rejects invalid question count", async () => {
+  await assert.rejects(
+    () => generateQuiz("ANOVA", -1)
+  );
+});
