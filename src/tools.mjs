@@ -1,3 +1,4 @@
+import { complete } from "./model-client.mjs";
 import notes from "./data/statistics-notes.json" with { type: "json" };
 
 export function searchStatisticsTopic(topic) {
@@ -14,6 +15,7 @@ export function searchStatisticsTopic(topic) {
   return result;
 }
 export async function generateQuiz(topic, questionCount = 3) {
+
   if (!topic || typeof topic !== "string") {
     throw new Error("Topic is required.");
   }
@@ -22,13 +24,34 @@ export async function generateQuiz(topic, questionCount = 3) {
     throw new Error("Question count must be positive.");
   }
 
-  return {
-    topic,
-    questions: Array.from({ length: questionCount }, (_, index) => ({
-      question: `Sample question ${index + 1} about ${topic}?`,
-      options: ["Option A", "Option B", "Option C", "Option D"],
-      correct_index: 0,
-      explanation: `This is a sample explanation for ${topic}.`
-    }))
-  };
+  const response = await complete([
+    {
+      role: "system",
+      content: `
+Generate a statistics quiz.
+
+Return ONLY valid JSON.
+
+Format:
+
+{
+  "topic": "",
+  "questions": [
+    {
+      "question": "",
+      "options": ["","","",""],
+      "correct_index": 0,
+      "explanation": ""
+    }
+  ]
+}
+`
+    },
+    {
+      role: "user",
+      content: `Generate ${questionCount} multiple-choice questions about ${topic}.`
+    }
+  ]);
+
+  return JSON.parse(response.text);
 }
